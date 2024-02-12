@@ -29,84 +29,37 @@
 </div>   
 </div> 
 <!-- Cafe Menu -->
- 
-<div id="menu" class="go" data-parallax="scroll" data-image-src="<?php $cafe_menu_image = get_option('cafe_menu_image');echo  esc_url( $cafe_menu_image) . '" alt="cafe menu Image">';?>"
+<div id="menu" class="go" data-parallax="scroll" data-image-src="<?php $cafe_menu_image = get_option('cafe_menu_image'); echo esc_url($cafe_menu_image); ?>" alt="cafe menu Image">
     <div class="container mx-auto tm-container py-24 sm:py-48">
         <div class="text-center mb-16">
             <h2 class="bg-white tm-text-brown py-6 px-12 text-4xl font-medium inline-block rounded-md">Our Cafe Menu</h2>
-        </div>            
-        <div class="flex flex-col lg:flex-row justify-around items-center">
-            <div class="flex-1 m-5 rounded-xl px-4 py-6 sm:px-8 sm:py-10 tm-bg-brown tm-item-container">
-                <div class="flex items-start mb-6 tm-menu-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/menu-item-1.jpg"  alt="Image" class="rounded-md">
-                    <div class="ml-3 sm:ml-6">
-                        <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Hot Cappuccino</h3>
-                        <div class="text-white text-md sm:text-lg font-light mb-1">S $8.50</div>
-                        <div class="text-white text-md sm:text-lg font-light">L $10.50</div>
-                    </div>                    
-                </div>
-                <div class="flex items-start mb-6 tm-menu-item">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/menu-item-2.jpg"  alt="Image" class="rounded-md">
-                    <div class="ml-3 sm:ml-6">
-                        <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Hot Americano</h3>
-                        <div class="text-white text-md sm:text-lg font-light mb-1">S $9.50</div>
-                        <div class="text-white text-md sm:text-lg font-light">L $12.50</div>
-                    </div>                    
-                </div>
-                <div class="flex items-start mb-6 tm-menu-item">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/menu-item-3.jpg"  alt="Image" class="rounded-md">
-                    <div class="ml-3 sm:ml-6">
-                        <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Hot Latte</h3>
-                        <div class="text-white text-md sm:text-lg font-light mb-1">M $11.75</div>
-                        <div class="text-white text-md sm:text-lg font-light">L $14.75</div>
-                    </div>                    
-                </div>
-                <div class="flex items-start mb-6 tm-menu-item">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/menu-item-4.jpg"  alt="Image" class="rounded-md">
-                    <div class="ml-3 sm:ml-6">
-                        <h3 class="text-lg sm:text-xl tm-text-yellow mb-1">Hot Espresso</h3>
-                        <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Hot Chocolate</h3>
-                        <div class="text-white text-md sm:text-lg font-light"> M $11.75 . L $14.75</div>
-                    </div>                    
-                </div>
-            </div>
-            <div class="flex-1 m-5 rounded-xl px-4 py-6 sm:px-8 sm:py-10 tm-bg-brown tm-item-container">
-                <div class="flex items-start justify-end mb-6 tm-menu-item-2">
-                    <div class="text-right mr-6">
-                        <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Iced Cappuccino</h3>
-                        <div class="text-white text-md sm:text-lg font-light mb-1">Small $10</div>
-                        <div class="text-white text-md sm:text-lg font-light">Large $15</div>
-                    </div>
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/menu-item-5.jpg"  alt="Image" class="rounded-md">                  
-                </div>
-                <div class="flex items-start justify-end mb-6 tm-menu-item-2">
-                    <div class="text-right mr-6">
-                        <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Iced Americano</h3>
-                        <div class="text-white text-md sm:text-lg font-light mb-1">Small $12.50</div>
-                        <div class="text-white text-md sm:text-lg font-light">Large $16.50</div>
-                    </div>
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/menu-item-6.jpg"  alt="Image" class="rounded-md">                   
-                </div>
-                <div class="flex items-start justify-end mb-6 tm-menu-item-2">
-                    <div class="text-right mr-6">
-                        <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Iced Milky Latte</h3>
-                        <div class="text-white text-md sm:text-lg font-light mb-1">Small $14</div>
-                        <div class="text-white text-md sm:text-lg font-light">Large $18</div>
-                    </div>   
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/menu-item-7.jpg"  alt="Image" class="rounded-md">                
-                </div>
-                <div class="flex items-start justify-end mb-6 tm-menu-item-2">                    
-                    <div class="text-right mr-6">
-                        <h3 class="text-lg sm:text-xl tm-text-yellow mb-1">Iced Espresso</h3>
-                        <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Iced Mocha</h3>
-                        <div class="text-white text-md sm:text-lg font-light">Small $10 . Large $15</div>
-                    </div> 
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/menu-item-8.jpg"  alt="Image" class="rounded-md">                   
-                </div>
-            </div>
         </div>
-    </div>        
+
+        <ul class="flex flex-wrap lg:flex-nowrap justify-around items-center list-none p-0">
+            <?php
+            $menu_items = array(
+                'hot_cappuccino', 'hot_americano', 'hot_latte', 'hot_chocolate',
+                'iced_cappuccino', 'iced_americano', 'iced_milky_latte'
+            );
+
+            foreach ($menu_items as $key) {
+                $menu_image = get_theme_mod('custom_menu_image_' . $key);
+                $menu_name = get_theme_mod('custom_menu_name_' . $key);
+                $menu_price = get_theme_mod('custom_menu_price_' . $key);
+            ?>
+                <li class="flex-1 m-5 rounded-xl px-4 py-6 sm:px-8 sm:py-10 tm-bg-brown tm-item-container">
+                    <div class="flex flex-col items-start">
+                        <img src="<?php echo esc_url($menu_image); ?>" alt="<?php echo esc_attr($menu_name); ?>" class="rounded-md mb-4">
+                        <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow"><?php echo esc_html($menu_name); ?></h3>
+                        <div class="text-white text-md sm:text-lg font-light mb-1">$<?php echo esc_html($menu_price); ?></div>
+                    </div>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
 </div>
+
+
 <!--About -->
 <div id="about" class="parallax-window" data-parallax="scroll" data-image-src="<?php $about_image = get_option('about_image');echo  esc_url( $about_image) . '" alt="about Image">';?>"
     <div class="container mx-auto tm-container py-24 sm:py-48">
