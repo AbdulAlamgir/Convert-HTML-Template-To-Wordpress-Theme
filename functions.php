@@ -133,55 +133,50 @@ add_action('admin_enqueue_scripts', 'enqueue_custom_scripts');
 
 // Function to register Theme Customizer settings
 function custom_cafe_menu_customizer($wp_customize) {
-    // Add controls for specific menu items (name, price, and image)
-    $menu_items = array(
-        'hot_cappuccino' => array(
-            'name'  => 'Hot Cappuccino',
-            'price' => 8.50,
-            'image' => 'https://example.com/images/hot_cappuccino.jpg',
-        ),
-        'hot_americano' => array(
-            'name'  => 'Hot Americano',
-            'price' => 7.50,
-            'image' => 'https://example.com/images/hot_americano.jpg',
-        ),
-        'hot_Latte' => array(
-            'name'  => 'Hot Latte',
-            'price' => 8.50,
-            'image' => 'https://example.com/images/hot_latte.jpg',
-        ),
-        'hot_Chocolate' => array(
-            'name'  => 'Hot Chocolate',
-            'price' => 7.50,
-            'image' => 'https://example.com/images/hot_chocolate.jpg',
-        ),
-        'iced_cappuccino' => array(
-            'name'  => 'Iced Cappuccino',
-            'price' => 8.50,
-            'image' => 'https://example.com/images/iced_cappuccino.jpg',
-        ),
-        'iced_americano' => array(
-            'name'  => 'Iced Americano',
-            'price' => 7.50,
-            'image' => 'https://example.com/images/iced_americano.jpg',
-        ),
-        'iced_milky_latte' => array(
-            'name'  => 'Iced_Milky_Latte',
-            'price' => 8.50,
-            'image' => 'https://example.com/images/iced_milky_latte.jpg',
-        ),
-        'Iced_mocha' => array(
-            'name'  => 'Iced_mocha',
-            'price' => 7.50,
-            'image' => 'https://example.com/images/Iced_mocha.jpg',
-        ),
-    );
-
     // Add a section for menu customization
     $wp_customize->add_section('custom_cafe_menu_section', array(
         'title'    => __('Cafe Menu', 'text-domain'),
         'priority' => 30,
     ));
+
+    // Menu items data
+    $menu_items = array(
+        'hot_cappuccino' => array(
+            'name'  => 'Hot Cappuccino',
+            'base_price' => 8.50,
+            'image' => 'https://example.com/images/hot_cappuccino.jpg',
+        ),
+        'hot_americano' => array(
+            'name'  => 'Hot Americano',
+            'base_price' => 7.50,
+            'image' => 'https://example.com/images/hot_americano.jpg',
+        ),
+        'hot_latte' => array(
+            'name'  => 'Hot Latte',
+            'base_price' => 8.50,
+            'image' => 'https://example.com/images/hot_latte.jpg',
+        ),
+        'hot_chocolate' => array(
+            'name'  => 'Hot Chocolate',
+            'base_price' => 7.50,
+            'image' => 'https://example.com/images/hot_chocolate.jpg',
+        ),
+        'iced_cappuccino' => array(
+            'name'  => 'Iced Cappuccino',
+            'base_price' => 8.50,
+            'image' => 'https://example.com/images/iced_cappuccino.jpg',
+        ),
+        'iced_americano' => array(
+            'name'  => 'Iced Americano',
+            'base_price' => 7.50,
+            'image' => 'https://example.com/images/iced_americano.jpg',
+        ),
+        'iced_milky_latte' => array(
+            'name'  => 'Iced Milky Latte',
+            'base_price' => 8.50,
+            'image' => 'https://example.com/images/iced_milky_latte.jpg',
+        ),
+    );
 
     // Add controls for specific menu items (name, price, and image)
     foreach ($menu_items as $key => $item) {
@@ -196,13 +191,13 @@ function custom_cafe_menu_customizer($wp_customize) {
             'type'     => 'text',
         ));
 
-        // Add control for menu item price
-        $wp_customize->add_setting('custom_menu_price_' . $key, array(
-            'default'           => $item['price'],
+        // Add control for menu item base price
+        $wp_customize->add_setting('custom_menu_base_price_' . $key, array(
+            'default'           => $item['base_price'],
             'sanitize_callback' => 'sanitize_text_field',
         ));
-        $wp_customize->add_control('custom_menu_price_' . $key, array(
-            'label'    => __('Price for ' . $item['name'], 'text-domain'),
+        $wp_customize->add_control('custom_menu_base_price_' . $key, array(
+            'label'    => __('Base Price for ' . $item['name'], 'text-domain'),
             'section'  => 'custom_cafe_menu_section',
             'type'     => 'number',
         ));
@@ -218,9 +213,132 @@ function custom_cafe_menu_customizer($wp_customize) {
         )));
     }
 }
+
 add_action('customize_register', 'custom_cafe_menu_customizer');
 
+function custom_theme_customize_register( $wp_customize ) {
+    // Section for Contact Options
+    $wp_customize->add_section( 'contact_section', array(
+        'title'    => __( 'Contact Section', 'your_theme_textdomain' ),
+        'priority' => 30,
+    ) );
 
+    // Contact Us Title
+    $wp_customize->add_setting( 'contact_us_title', array(
+        'default'   => 'Contact Us',
+        'transport' => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'contact_us_title', array(
+        'label'    => __( 'Contact Us Title', 'your_theme_textdomain' ),
+        'section'  => 'contact_section',
+        'type'     => 'text',
+    ) );
+
+    // Contact Us Description
+    $wp_customize->add_setting( 'contact_us_description', array(
+        'default'   => 'Praesent tellus magna, consectetur sit amet volutpat eu, pulvinar vitae sem. Sed ultrices.',
+        'transport' => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'contact_us_description', array(
+        'label'    => __( 'Contact Us Description', 'your_theme_textdomain' ),
+        'section'  => 'contact_section',
+        'type'     => 'textarea',
+    ) );
+
+    // Telephone Number
+    $wp_customize->add_setting('telephone_number', array(
+        'default'   => '010-020-0340',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('telephone_number', array(
+        'label'    => __('Telephone Number', 'your_theme_textdomain'),
+        'section'  => 'contact_section',
+        'type'     => 'text',
+    ));
+
+    // Email Address
+    $wp_customize->add_setting('email_address', array(
+        'default'   => 'info@company.com',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('email_address', array(
+        'label'    => __('Email Address', 'your_theme_textdomain'),
+        'section'  => 'contact_section',
+        'type'     => 'text',
+    ));
+
+    // Google Maps Link
+    $wp_customize->add_setting('google_maps_link', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('google_maps_link', array(
+        'label'    => __('Google Maps Link', 'your_theme_textdomain'),
+        'section'  => 'contact_section',
+        'type'     => 'url',
+    ));
+}
+add_action( 'customize_register', 'custom_theme_customize_register' );
+//  About Options
+function custom_themes_customize_register($wp_customize) {
+    // Section for About Options
+    $wp_customize->add_section('about_section', array(
+        'title'    => __('About Section', 'your_theme_textdomain'),
+        'priority' => 40,
+    ));
+
+    // About Heading
+    $wp_customize->add_setting( 'about_heading', array(
+        'default'   => 'About our cafe',
+        'transport' => 'refresh',
+    ) );
+    $wp_customize->add_control( 'about_heading', array(
+        'label'    => __( 'About Heading', 'your_theme_textdomain' ),
+        'section'  => 'about_section',
+        'type'     => 'textarea',
+    ) );
+
+
+    // About Content
+    $wp_customize->add_setting('about_content', array(
+        'default'   => 'Images are taken from Pexels, a great stock photo website. This template used Tailwind CSS. You may modify Antique Cafe template in any way you prefer and use it for your website.',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('about_content', array(
+        'label'    => __('About Content', 'your_theme_textdomain'),
+        'section'  => 'about_section',
+        'type'     => 'textarea',
+    ));
+     // Contact Button Text
+     $wp_customize->add_setting('contact_button_text', array(
+        'default'   => 'Contact',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('contact_button_text', array(
+        'label'    => __('Contact Button Text', 'your_theme_textdomain'),
+        'section'  => 'about_section',
+        'type'     => 'text',
+    ));
+        // Support Content
+        $wp_customize->add_setting('support_content', array(
+            'default'   => 'If you wish to <a rel="nofollow" href="https://www.tooplate.com/contact" target="_parent">support us</a>, please make a little donation via PayPal. That would be very helpful. Another way is to tell your friends about Tooplate website. Thank you.',
+            'transport' => 'refresh',
+        ));
+    
+        $wp_customize->add_control('support_content', array(
+            'label'    => __('Support Content', 'your_theme_textdomain'),
+            'section'  => 'about_section',
+            'type'     => 'textarea',
+        ));
+}
+add_action('customize_register', 'custom_themes_customize_register');
 
 ?>
 
